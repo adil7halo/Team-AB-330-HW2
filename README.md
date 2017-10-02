@@ -1,6 +1,7 @@
 # Comp-330-HW2
 HW2 Team Assignment. 
 
+Functional Requirements: https://docs.google.com/document/d/1ne76NKbbJQZZfn9gr0Ll6qXji_w85t_m6EUWgtwFqds/edit 
 _______________________________________________________________________________________
 
 Homework 2 has an even more limited specification than Homework 1. In Homework 1, you were actually given some idea of what to expect. In Homework 2, your mission is to show that you can come up with something interesting to do to improve Homework 1. As you have noticed by now, we are merging teams of 2 to form teams of 4 (or 5), which will likely result in some spirited discussions about what to keep vs. throw away from your work on Homework 1.

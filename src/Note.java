@@ -81,51 +81,62 @@ public class Note {
         return mentions.size() > 0;
     }
   
-  // Display Note's mentions
-  public void displayMentions() {
-    System.out.println("Note: " + name);
-    if (!hasMentions()) {
-      System.out.println("Mentions: None");
-    } else {
-      String result = "Mentions: ";
-      for (String mention: mentions) {
-        result += mention + " ";
-      }
-      System.out.println(result);
+   // Display Note's mentions
+    public void displayMentions() {
+        System.out.println("Note: " + name);
+        if (!hasMentions()) {
+            System.out.println("Mentions: None");
+        } else {
+            String result = "Mentions: ";
+            for (String mention: mentions) {
+                result += mention + " ";
+            }
+            System.out.println(result);
+        }
     }
-  }
-  
-  // Determine if Note has keywords
-  public boolean hasKeywords() {
-    return keywords.size() > 0;
-  }
-  
-  // Display keywords of Note
-  public void displayKeywords() {
-    System.out.println("Note: " + name);
-    if (!hasKeywords()) {
-      System.out.println("Keywords: None");
-    } else {
-      String result = "Keywords: ";
-      for (String keyword: keywords) {
-        result += keyword + " ";
-      }
-      System.out.println(result);
+    
+    // Determine if Note has keywords
+    public boolean hasKeywords() {
+        return keywords.size() > 0;
     }
-  }
-  
-  // Search Note for keyword/mention term
-  public boolean search(String term) {
-    for (String mention: mentions) {
-      if (mention.contains(term)) {
-        return true;
-      }
+    
+    // Display keywords of Note
+    public void displayKeywords() {
+        System.out.println("Note: " + name);
+        if (!hasKeywords()) {
+            System.out.println("Keywords: None");
+        } else {
+            String result = "Keywords: ";
+            for (String keyword: keywords) {
+                result += keyword + " ";
+            }
+            System.out.println(result);
+        }
     }
-    for (String keyword: keywords) {
-      if (keyword.contains(term)) {
-        return true;
-      }
+    
+    // Search Note for keyword/mention term
+    public boolean search(String term) {
+        for (String mention: mentions) {
+            if (mention.contains(term)) {
+                return true;
+            }
+        }
+        for (String keyword: keywords) {
+            if (keyword.contains(term)) {
+                return true;
+            }
+        }
+        return false;
     }
-    return false;
-  }
+    
+    // Get the time the note was last changed
+    public long getTime() {
+        return file.lastModified();
+    }
+    
+    // Get the length of the note in characters
+    public long getLength() {
+        return length;
+    }
+    
 }

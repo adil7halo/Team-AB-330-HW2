@@ -29,8 +29,7 @@ public class Note {
         this.file = file;
         this.length = 0;
         parse();
-    } 
-  
+    }
     
     // Method to parse Note file
     private void parse() {
@@ -80,8 +79,8 @@ public class Note {
     public boolean hasMentions() {
         return mentions.size() > 0;
     }
-  
-   // Display Note's mentions
+    
+    // Display Note's mentions
     public void displayMentions() {
         System.out.println("Note: " + name);
         if (!hasMentions()) {

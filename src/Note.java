@@ -31,63 +31,55 @@ public class Note {
         parse();
     } 
   
-  // Method to parse Note file
-  private void parse() {
-    Pattern mentionPattern = Pattern.compile("@\\w+");
-    Pattern keywordPattern = Pattern.compile("#\\w+");
-    Pattern topicPattern = Pattern.compile("!\\w+");
-    Pattern linkPattern = Pattern.compile("^\\w+");
-    Pattern urlPattern =  Pattern.compile(
-        "(?:^|[\\W])((ht|f)tp(s?):\\/\\/|www\\.)"
-                + "(([\\w\\-]+\\.){1,}?([\\w\\-.~]+\\/?)*"
-                + "[\\p{Alnum}.,%_=?&#\\-+()\\[\\]\\*$~@!:/{};']*)",
-        Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
-    try {
-      List<String> lines = Files.readAllLines(Paths.get(path),StandardCharsets.UTF_8);
-      for (String line: lines) {
-        Matcher matcher = mentionPattern.matcher(line);
-        while (matcher.find())
-        {
-          mentions.add(matcher.group().substring(1));
+    
+    // Method to parse Note file
+    private void parse() {
+        Pattern mentionPattern = Pattern.compile("@\\w+");
+        Pattern keywordPattern = Pattern.compile("#\\w+");
+        Pattern topicPattern = Pattern.compile("!\\w+");
+        Pattern linkPattern = Pattern.compile("^\\w+");
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(path),StandardCharsets.UTF_8);
+            for (String line: lines) {
+                length += line.trim().length();
+                Matcher matcher = mentionPattern.matcher(line);
+                while (matcher.find())
+                {
+                    mentions.add(matcher.group().substring(1));
+                }
+                matcher = keywordPattern.matcher(line);
+                while (matcher.find())
+                {
+                    keywords.add(matcher.group().substring(1));
+                }
+                if (identifier == null) {
+                    matcher = topicPattern.matcher(line);
+                    while (matcher.find())
+                    {
+                        identifier = matcher.group().substring(1);
+                        break;
+                    }
+                }
+                matcher = linkPattern.matcher(line);
+                while (matcher.find())
+                {
+                    links.add(matcher.group().substring(1));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        matcher = keywordPattern.matcher(line);
-        while (matcher.find())
-        {
-          keywords.add(matcher.group().substring(1));
-        }
-        if (identifier == null) {
-          matcher = topicPattern.matcher(line);
-          while (matcher.find())
-          {
-            identifier = matcher.group().substring(1);
-            break;
-          }
-        }
-        matcher = linkPattern.matcher(line);
-        while (matcher.find())
-        {
-          links.add(matcher.group().substring(1));
-        }
-        matcher = urlPattern.matcher(line);
-        while (matcher.find())
-        {
-          urls.add(matcher.group());
-        }
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
     }
-  }
-  
-  // Get name of Note
-  public String getName() {
-    return name;
-  }
-  
-  // Determine if Note has mentions
-  public boolean hasMentions() {
-    return mentions.size() > 0;
-  }
+    
+    // Get name of Note
+    public String getName() {
+        return name;
+    }
+    
+    // Determine if Note has mentions
+    public boolean hasMentions() {
+        return mentions.size() > 0;
+    }
   
   // Display Note's mentions
   public void displayMentions() {

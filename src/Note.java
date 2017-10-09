@@ -7,6 +7,7 @@ import java.util.regex.*;
 /*
  *  Note class
  */
+ 
 public class Note {
     
     private String name;

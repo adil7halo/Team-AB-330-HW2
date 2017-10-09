@@ -83,8 +83,47 @@ public class NoteSystem {
       System.out.println(noteName);
     }
   }
-  
-  // Display menu
+      // Generate report of notes in order of most recent
+    public void report7() {
+        System.out.println("Notes in chronological order:");
+        ArrayList<Note> notesSorted = new ArrayList<Note>();
+        for (String noteName: notes.keySet()) {
+            notesSorted.add(notes.get(noteName));
+        }
+        Collections.sort(notesSorted, new Comparator<Note>() {
+            @Override
+            public int compare(Note n1, Note n2) {
+                return (int)(n1.getTime() - n2.getTime());
+            }
+        });
+        for (Note note: notesSorted) {
+            String noteName = note.getName();
+            Date date = new Date(note.getTime());
+            System.out.println(noteName + "\t\t" + date);
+        }
+    }
+    
+    // Generate report of notes in order of length
+    public void report8() {
+        System.out.println("Notes in order of length:");
+        ArrayList<Note> notesSorted = new ArrayList<Note>();
+        for (String noteName: notes.keySet()) {
+            notesSorted.add(notes.get(noteName));
+        }
+        Collections.sort(notesSorted, new Comparator<Note>() {
+            @Override
+            public int compare(Note n1, Note n2) {
+                return (int)(n1.getLength() - n2.getLength());
+            }
+        });
+        for (Note note: notesSorted) {
+            String noteName = note.getName();
+            String length = note.getLength() + " characters";
+            System.out.println(noteName + "\t\t" + length);
+        }
+    }
+    
+  // Display menu 
   public static void displayMenu() {
     System.out.println("Generate report:");
     System.out.println("1. Report of all notes containing one or more mentions");

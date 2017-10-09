@@ -123,48 +123,55 @@ public class NoteSystem {
         }
     }
     
-  // Display menu 
-  public static void displayMenu() {
-    System.out.println("Generate report:");
-    System.out.println("1. Report of all notes containing one or more mentions");
-    System.out.println("2. Report of all notes, organized by mention");
-    System.out.println("3. Report of all notes containing one or more keywords");
-    System.out.println("4. Report of all notes, organized by keyword");
-    System.out.println("5. Report of all notes by selected mention/keyword");
-    System.out.println("6. Report of all notes in topological order");
-    System.out.println("7. Exit");
-  }
-  
-  // Main method for execution
-  public static void main(String[] args) {
-    NoteSystem notes = new NoteSystem(".");
-    Scanner s = new Scanner(System.in);
-    while (true) {
-      displayMenu();
-      System.out.print("Choice: ");
-      String input = s.nextLine();
-      if (input.equals("1")) {
-        notes.report1();
-      } else if (input.equals("2")) {
-        notes.report2();
-      } else if (input.equals("3")) {
-        notes.report3();
-      } else if (input.equals("4")) {
-        notes.report4();
-      } else if (input.equals("5")) {
-        System.out.print("Enter mention/keyword to search: ");
-        String term = s.nextLine();
-        notes.report5(term);
-      } else if (input.equals("6")) {
-        notes.report6();
-      } else if (input.equals("7")) {
-        return;
-      } else {
-        System.out.println("Error: Invalid input.");
-      }
+    // Display menu
+    public static void displayMenu() {
+        System.out.println("Generate report:");
+        System.out.println("1. Report of all notes containing one or more mentions");
+        System.out.println("2. Report of all notes, organized by mention");
+        System.out.println("3. Report of all notes containing one or more keywords");
+        System.out.println("4. Report of all notes, organized by keyword");
+        System.out.println("5. Report of all notes by selected mention/keyword");
+        System.out.println("6. Report of all notes in topological order");
+        System.out.println("7. Report of all notes in chronological order");
+        System.out.println("8. Report of all notes in order of length");
+        System.out.println("9. Exit");
     }
-  }
-  
-  
+     
+    
+    // Main method for execution
+    public static void main(String[] args) {
+        NoteSystem notes = new NoteSystem(".");
+        Scanner s = new Scanner(System.in);
+        while (true) {
+            displayMenu();
+            System.out.print("Choice: ");
+            String input = s.nextLine();
+            if (input.equals("1")) {
+                notes.report1();
+            } else if (input.equals("2")) {
+                notes.report2();
+            } else if (input.equals("3")) {
+                notes.report3();
+            } else if (input.equals("4")) {
+                notes.report4();
+            } else if (input.equals("5")) {
+                System.out.print("Enter mention/keyword to search: ");
+                String term = s.nextLine();
+                notes.report5(term);
+            } else if (input.equals("6")) {
+                notes.report6();
+            } else if (input.equals("7")) {
+                notes.report7();
+            } else if (input.equals("8")) {
+                notes.report8();
+            } else if (input.equals("9")) {
+                return;
+            } else {
+                System.out.println("Error: Invalid input");
+            }
+        }
+    }
+    
+    
 }
-
+ 

@@ -27,7 +27,7 @@ public class NoteSystem {
         for (String noteName: notes.keySet()) {
             Note note = notes.get(noteName);
             if (note.hasMentions()) {
-                System.out.println(noteName);
+                System.out.println(noteName); 
             }
         }
     }

@@ -18,6 +18,7 @@ public class Note {
     private String identifier;
     private ArrayList<String> links;
     private int length;
+    private boolean favoriteStar; //Marked true if priortized by user
     
     // Constructor
     public Note(File file) {
@@ -29,6 +30,7 @@ public class Note {
         this.path = file.getPath();
         this.file = file;
         this.length = 0;
+        this.favoriteStar = false;
         parse();
     }
     
@@ -139,4 +141,17 @@ public class Note {
         return length;
     }
     
+    //Get the boolean value of favorites
+    public boolean getFavorite() {
+        return favoriteStar;
+    }
+    
+    public void setFavorite(Note note) {
+       if(!note.getFavorite()) {
+           this.favoriteStar = true;
+       }
+       else {
+           this.favoriteStar = false;
+       }
+    }
 }

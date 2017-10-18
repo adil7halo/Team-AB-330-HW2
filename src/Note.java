@@ -7,9 +7,9 @@ import java.util.regex.*;
 /*
  *  Note class
  */
- 
+
 public class Note {
-    
+
     private String name;
     private String path;
     private File file;
@@ -19,7 +19,7 @@ public class Note {
     private ArrayList<String> links;
     private int length;
     private boolean favoriteStar; //Marked true if priortized by user
-    
+
     // Constructor
     public Note(File file) {
         mentions = new ArrayList<String>();
@@ -33,7 +33,7 @@ public class Note {
         this.favoriteStar = false;
         parse();
     }
-    
+
     // Method to parse Note file
     private void parse() {
         Pattern mentionPattern = Pattern.compile("@\\w+");
@@ -72,17 +72,17 @@ public class Note {
             e.printStackTrace();
         }
     }
-    
+
     // Get name of Note
     public String getName() {
         return name;
     }
-    
+
     // Determine if Note has mentions
     public boolean hasMentions() {
         return mentions.size() > 0;
     }
-    
+
     // Display Note's mentions
     public void displayMentions() {
         System.out.println("Note: " + name);
@@ -96,12 +96,12 @@ public class Note {
             System.out.println(result);
         }
     }
-    
+
     // Determine if Note has keywords
     public boolean hasKeywords() {
         return keywords.size() > 0;
     }
-    
+
     // Display keywords of Note
     public void displayKeywords() {
         System.out.println("Note: " + name);
@@ -115,7 +115,7 @@ public class Note {
             System.out.println(result);
         }
     }
-    
+
     // Search Note for keyword/mention term
     public boolean search(String term) {
         for (String mention: mentions) {
@@ -130,28 +130,28 @@ public class Note {
         }
         return false;
     }
-    
+
     // Get the time the note was last changed
     public long getTime() {
         return file.lastModified();
     }
-    
+
     // Get the length of the note in characters
     public long getLength() {
         return length;
     }
-    
+
     //Get the boolean value of favorites
     public boolean getFavorite() {
         return favoriteStar;
     }
-    
+
     public void setFavorite(Note note) {
-       if(!note.getFavorite()) {
-           this.favoriteStar = true;
-       }
-       else {
-           this.favoriteStar = false;
-       }
+        if(!note.getFavorite()) {
+            this.favoriteStar = true;
+        }
+        else {
+            this.favoriteStar = false;
+        }
     }
 }

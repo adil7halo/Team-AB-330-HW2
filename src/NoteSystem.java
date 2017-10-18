@@ -5,9 +5,9 @@ import java.util.*;
  *  NoteSystem Class
  */
 public class NoteSystem {
-    
+
     HashMap<String,Note> notes = new HashMap<String,Note>();
-    
+
     // Constructor
     public NoteSystem(String directory) {
         System.out.println("Loading notes from directory: " + directory);
@@ -20,18 +20,18 @@ public class NoteSystem {
             }
         }
     }
-    
+
     // Generate report of notes containing one or more mentions
     public void report1() {
         System.out.println("Notes containing one or more mentions:");
         for (String noteName: notes.keySet()) {
             Note note = notes.get(noteName);
             if (note.hasMentions()) {
-                System.out.println(noteName); 
+                System.out.println(noteName);
             }
         }
     }
-    
+
     // Generate report of notes organized by mentions
     public void report2() {
         System.out.println("Notes organized by mentions:");
@@ -42,7 +42,7 @@ public class NoteSystem {
             }
         }
     }
-    
+
     // Generate report of notes containing one or more keywords
     public void report3() {
         System.out.println("Notes containing one or more keywords:");
@@ -53,7 +53,7 @@ public class NoteSystem {
             }
         }
     }
-    
+
     // Generate report of notes organized by keywords
     public void report4() {
         System.out.println("Notes organized by keywords:");
@@ -64,7 +64,7 @@ public class NoteSystem {
             }
         }
     }
-    
+
     // Generate report of notes containing keyword/mention
     public void report5(String term) {
         System.out.println("Notes containing keyword/mention "+term+":");
@@ -75,7 +75,7 @@ public class NoteSystem {
             }
         }
     }
-    
+
     // Generate report of notes in topological order
     public void report6() {
         System.out.println("Notes in topological order:");
@@ -83,7 +83,7 @@ public class NoteSystem {
             System.out.println(noteName);
         }
     }
-    
+
     // Generate report of notes in order of most recent
     public void report7() {
         System.out.println("Notes in chronological order:");
@@ -103,7 +103,7 @@ public class NoteSystem {
             System.out.println(noteName + "\t\t" + date);
         }
     }
-    
+
     // Generate report of notes in order of length
     public void report8() {
         System.out.println("Notes in order of length:");
@@ -123,7 +123,7 @@ public class NoteSystem {
             System.out.println(noteName + "\t\t" + length);
         }
     }
-    
+
     public void report9() { //Organized by favorites
         int countTrue = 0;
         int countFalse = 1;
@@ -133,10 +133,10 @@ public class NoteSystem {
         for (String noteName: notes.keySet()) { //Loop to add all notes from hash map to an array
             notesFavorited.add(notes.get(noteName));
         }
-        
+
         sizeOriginal = notesFavorited.size();//Size of unsorted array
         Note sortedNotes[] = new Note[sizeOriginal];//Sorted array intialized
-        
+
         for(int i = 0; i < sizeOriginal; i++) { //Loop to sort all the notes based on favorite
             if(notesFavorited.get(i).getFavorite() == true){//If note is true(favorited), add to beginning of sorted array
                 sortedNotes[countTrue] = notesFavorited.get(i);
@@ -147,7 +147,7 @@ public class NoteSystem {
                 countFalse++;
             }
         }
-        
+
         //Loop to print out report sorted by favorites
         for(int i = 0; i < sizeOriginal; i++){
             String noteName;
@@ -160,27 +160,27 @@ public class NoteSystem {
             }
         }
     }
-    
+
     public void report0() { //Type in the note you want favorited
         System.out.println("Enter the note you would like to favorite: ");
-        Scanner input = new Scanner(System.in); 
+        Scanner input = new Scanner(System.in);
         String favoriteAction = input.nextLine();
-        
+
         if(notes.containsKey(favoriteAction)){
             Note starredNote = notes.get(favoriteAction);//Gets the note from the hash map
-            
+
             if (starredNote.getFavorite() == false) { //If nots favorited yet, continue
-            starredNote.setFavorite(starredNote);
-            System.out.println(starredNote.getName() + " has been favorited!");
+                starredNote.setFavorite(starredNote);
+                System.out.println(starredNote.getName() + " has been favorited!");
             }
-            
+
             else {//If favorited already, continue
-            starredNote.setFavorite(starredNote);
-            System.out.println(starredNote.getName() + " has been unfavorited!");
+                starredNote.setFavorite(starredNote);
+                System.out.println(starredNote.getName() + " has been unfavorited!");
             }
         }
     }
-    
+
     // Display menu
     public static void displayMenu() {
         System.out.println("Generate report:");
@@ -196,7 +196,6 @@ public class NoteSystem {
         System.out.println("0. Type the name of the note you'd like to favorite or unfavorite");
         System.out.println("11. Exit");
     }
-    
     // Main method for execution
     public static void main(String[] args) {
         NoteSystem notes = new NoteSystem(".");
@@ -234,6 +233,6 @@ public class NoteSystem {
             }
         }
     }
-    
-    
-} 
+
+
+}

@@ -48,3 +48,20 @@ As in Homework 1, you must have a build script and make sure your program can be
 I’m going to get questions about this topic: Can I use databases? Can I write RESTful web services? Yes, but not all students know how to do these things upon entering COMP 330. But you need to make sure that you have a way of deploying your code on a cloud-based server.
 
 In other words, if you are less experienced, you are encouraged to keep it simple. We will not give better grades based on who knows the most as a team. We’re going to give grades based on what you produce and whether there is daily progress on your project. Those who produce the most process-related deliverables will earn the highest grades. It is possible to have a fully-working program that does not get a good grade. I do not recommend taking your chances when it comes to this last point.
+
+##NEW
+#How to Run Program In Cloud9.
+
+1. Open Cloud9 Repo for Team AB. 
+2. On the left hand side, open the 2 files, NoteSystem.java and Note.java.
+3. Click Run when you're in the NoteSystem.java folder. 
+4. Type numerical value into the menu
+5. Look at output that is generated. (Ignore the errors, those are because C9 doesn't have necessary libraries for Facebook API). 
+
+___________________________________________________________________________
+
+#How to Run Program using GUI (Full Program + Functionality)
+
+1. Download the latest GitHub repo (Available in our Basecamp Docs + Resources folder)
+2. Open in an IDE other than Cloud9 (GUI + some libraries aren't compatible with cloud9) (We recommend Netbeans IDE)
+3. FILL THIS IN WITH HOW TO RUN THE PROGRAM FROM THIS STEP

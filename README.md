@@ -72,4 +72,4 @@ ___________________________________________________________________________
 #Running the Facebook program
 
 
-Running it should be straight forward. Run the main in NoteSystem.java to be able to use this add-on. User should be able to press 11 for facebook features.  Press 1 for features to login. Once logged  in with your account, then you can go back to the IDE, and test out any other features.
+Running it should be straight forward. Run the main in NoteSystem.java to be able to use this add-on. User should be able to press 11 for facebook features.  Press 1 for features to login. Once logged  in with your account, then you can go back to the IDE, and test out any other features. CHECK OUT FACEBOOK API DOC FILE UNDER 'ISSUES' FOR API ASSISTANCE.

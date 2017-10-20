@@ -1,4 +1,4 @@
-# Comp-330-HW2
+# Comp-330-HW2, see below for instructions
 HW2 Team Assignment. 
 
 Functional Requirements: https://docs.google.com/document/d/1ne76NKbbJQZZfn9gr0Ll6qXji_w85t_m6EUWgtwFqds/edit 
@@ -63,5 +63,13 @@ ___________________________________________________________________________
 #How to Run Program using GUI (Full Program + Functionality)
 
 1. Download the latest GitHub repo (Available in our Basecamp Docs + Resources folder)
-2. Open in an IDE other than Cloud9 (GUI + some libraries aren't compatible with cloud9) (We recommend Netbeans IDE)
-3. FILL THIS IN WITH HOW TO RUN THE PROGRAM FROM THIS STEP
+2. Open in an IDE other than Cloud9 (GUI + some libraries aren't compatible with cloud9) (We recommend Netbeans IDE) :)
+2.5 Goto  main in NoteGUI.java, (can be found by searching file for TODO) and insert your desired directory. My computer crashes otherwise, so just to be safe!
+3. Once project is open, right click on the NoteGUI.java file in the project, and cliack 'run file'
+4. GUI window should appear. 
+
+
+#Running the Facebook program
+
+
+Running it should be straight forward. Run the main in NoteSystem.java to be able to use this add-on. User should be able to press 11 for facebook features.  Press 1 for features to login. Once logged  in with your account, then you can go back to the IDE, and test out any other features.

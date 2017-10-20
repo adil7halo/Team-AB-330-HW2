@@ -1,0 +1,122 @@
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author sarah
+ */
+public class FacebookNoteSystemTest {
+
+    public FacebookNoteSystemTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of readFile method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testReadFile() throws Exception {
+        System.out.println("readFile");
+        String filePath = "";
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        String expResult = "";
+        String result = instance.readFile(filePath);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of FacebookLogin method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testFacebookLogin() {
+        System.out.println("FacebookLogin");
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        instance.FacebookLogin();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getName method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testGetName() {
+        System.out.println("getName");
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        String expResult = "";
+        String result = instance.getName();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of postOnFacebook method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testPostOnFacebook() throws Exception {
+        System.out.println("postOnFacebook");
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        instance.postOnFacebook();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of displayMenu method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testDisplayMenu() {
+        System.out.println("displayMenu");
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        instance.displayMenu();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of FacebookOptions method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testFacebookOptions() throws Exception {
+        System.out.println("FacebookOptions");
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        instance.FacebookOptions();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of GetStatuses method, of class FacebookNoteSystem.
+     */
+    @Test
+    public void testGetStatuses() throws Exception {
+        System.out.println("GetStatuses");
+        FacebookNoteSystem instance = new FacebookNoteSystem();
+        instance.GetStatuses();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+}

@@ -1,0 +1,210 @@
+import java.util.ArrayList;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author sarah
+ */
+public class NoteTest {
+
+    public NoteTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of parse method, of class Note.
+     */
+    @Test
+    public void testParse() {
+        System.out.println("parse");
+        Note instance = null;
+        instance.parse();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getName method, of class Note.
+     */
+    @Test
+    public void testGetName() {
+        System.out.println("getName");
+        Note instance = null;
+        String expResult = "";
+        String result = instance.getName();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of hasMentions method, of class Note.
+     */
+    @Test
+    public void testHasMentions() {
+        System.out.println("hasMentions");
+        Note instance = null;
+        boolean expResult = false;
+        boolean result = instance.hasMentions();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of displayMentions method, of class Note.
+     */
+    @Test
+    public void testDisplayMentions() {
+        System.out.println("displayMentions");
+        Note instance = null;
+        instance.displayMentions();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getMentions method, of class Note.
+     */
+    @Test
+    public void testGetMentions() {
+        System.out.println("getMentions");
+        Note instance = null;
+        ArrayList<String> expResult = null;
+        ArrayList<String> result = instance.getMentions();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getKeywords method, of class Note.
+     */
+    @Test
+    public void testGetKeywords() {
+        System.out.println("getKeywords");
+        Note instance = null;
+        ArrayList<String> expResult = null;
+        ArrayList<String> result = instance.getKeywords();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of hasKeywords method, of class Note.
+     */
+    @Test
+    public void testHasKeywords() {
+        System.out.println("hasKeywords");
+        Note instance = null;
+        boolean expResult = false;
+        boolean result = instance.hasKeywords();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of displayKeywords method, of class Note.
+     */
+    @Test
+    public void testDisplayKeywords() {
+        System.out.println("displayKeywords");
+        Note instance = null;
+        instance.displayKeywords();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of search method, of class Note.
+     */
+    @Test
+    public void testSearch() {
+        System.out.println("search");
+        String term = "";
+        Note instance = null;
+        boolean expResult = false;
+        boolean result = instance.search(term);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getTime method, of class Note.
+     */
+    @Test
+    public void testGetTime() {
+        System.out.println("getTime");
+        Note instance = null;
+        long expResult = 0L;
+        long result = instance.getTime();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getLength method, of class Note.
+     */
+    @Test
+    public void testGetLength() {
+        System.out.println("getLength");
+        Note instance = null;
+        long expResult = 0L;
+        long result = instance.getLength();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getFavorite method, of class Note.
+     */
+    @Test
+    public void testGetFavorite() {
+        System.out.println("getFavorite");
+        Note instance = null;
+        boolean expResult = false;
+        boolean result = instance.getFavorite();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setFavorite method, of class Note.
+     */
+    @Test
+    public void testSetFavorite() {
+        System.out.println("setFavorite");
+        Note note = null;
+        Note instance = null;
+        instance.setFavorite(note);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+}

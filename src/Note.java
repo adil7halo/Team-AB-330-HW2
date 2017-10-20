@@ -3,6 +3,30 @@ import java.nio.charset.*;
 import java.nio.file.*;
 import java.util.*;
 import java.util.regex.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import javax.swing.SwingUtilities;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /*
  *  Note class
@@ -10,15 +34,16 @@ import java.util.regex.*;
 
 public class Note {
 
-    private String name;
-    private String path;
-    private File file;
-    private ArrayList<String> mentions;
-    private ArrayList<String> keywords;
-    private String identifier;
-    private ArrayList<String> links;
-    private int length;
-    private boolean favoriteStar; //Marked true if priortized by user
+    public String name;
+    public String path;
+    public File file;
+    public ArrayList<String> mentions;
+    public ArrayList<String> keywords;
+    public String identifier;
+    public ArrayList<String> links;
+    public int length;
+    public boolean favoriteStar; //Marked true if priortized by user
+    private String result;
 
     // Constructor
     public Note(File file) {
@@ -35,7 +60,7 @@ public class Note {
     }
 
     // Method to parse Note file
-    private void parse() {
+    public void parse() {
         Pattern mentionPattern = Pattern.compile("@\\w+");
         Pattern keywordPattern = Pattern.compile("#\\w+");
         Pattern topicPattern = Pattern.compile("!\\w+");
@@ -97,6 +122,13 @@ public class Note {
         }
     }
 
+    public ArrayList<String> getMentions(){
+        return this.mentions;
+    }
+    public ArrayList<String> getKeywords(){
+        return this.keywords;
+    }
+
     // Determine if Note has keywords
     public boolean hasKeywords() {
         return keywords.size() > 0;
@@ -155,3 +187,4 @@ public class Note {
         }
     }
 }
+

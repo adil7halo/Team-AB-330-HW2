@@ -1,15 +1,19 @@
-package src;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.SwingUtilities;
 
 /**
@@ -20,6 +24,7 @@ public class NoteUI extends javax.swing.JFrame {
 
     HashMap<String,Note> notes = new HashMap<String,Note>();
 
+
     /**
      * Creates new form NoteUI
      * @param directory
@@ -29,6 +34,9 @@ public class NoteUI extends javax.swing.JFrame {
         initComponents();
         String newline = null;
         String newLine = "\n";
+
+
+
         jTextArea1.setText("Loading notes from directory: " + directory + newLine);
         File folder = new File(directory);
         File[] listOfFiles = folder.listFiles();
@@ -295,8 +303,16 @@ private void redirectSystemStreams() {
         String newLine = "\n";
         jTextArea1.append(newLine + "Notes organized by mentions:" + newLine);
         notes.keySet().stream().map((noteName) -> notes.get(noteName)).filter((note) -> (note.hasMentions())).forEachOrdered((note) -> {
-            note.displayMentions();
-        });
+                    ArrayList<String> mNote = note.getMentions();
+                    String mName = note.getName();
+                    String nameRes = "Name: ";
+
+                    String result = "Mentions: ";
+                    result += mNote + " ";
+                    nameRes += mName + " ";
+                    jTextArea1.append(nameRes + result + newLine);
+                }
+        );
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,7 +320,15 @@ private void redirectSystemStreams() {
         String newLine = "\n";
         jTextArea1.append(newLine + "Notes organized by keywords:" + newLine);
         notes.keySet().stream().map((noteName) -> notes.get(noteName)).filter((note) -> (note.hasKeywords())).forEachOrdered((note) -> {
-            note.displayKeywords();
+            ArrayList<String> kNote = note.getKeywords();
+            String kName = note.getName();
+            String kNameRes = "Name: ";
+
+            String kResult = "Keywords: ";
+            kResult += kNote + " ";
+            kNameRes += kName + " ";
+            jTextArea1.append(kNameRes + kResult + newLine);
+
         });
     }
 
@@ -410,7 +434,7 @@ private void redirectSystemStreams() {
         // TODO add your handling code here:
     }
 
-
+    // Method to parse Note file
 
     /**
      * @param args the command line arguments
@@ -468,3 +492,4 @@ private void redirectSystemStreams() {
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration
 }
+

@@ -1,10 +1,36 @@
+/*import com.restfb.*;
+import com.restfb.types.FacebookType;
+import com.restfb.types.User;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;*/
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 /*
  *  NoteSystem Class
  */
 public class NoteSystem {
+    //*FacebookNoteSystem facebook = new FacebookNoteSystem();
+
+    public static byte[] getBytesFromInputStream(InputStream is) {
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        try {
+            byte[] buffer = new byte[65535];
+            for (int len; (len = is.read(buffer)) != -1;) {
+                os.write(buffer, 0, len);
+            }
+            os.flush();
+            return os.toByteArray();
+        } catch (IOException e) {
+            return null;
+        }
+    }
 
     HashMap<String,Note> notes = new HashMap<String,Note>();
 
@@ -42,6 +68,8 @@ public class NoteSystem {
             }
         }
     }
+
+
 
     // Generate report of notes containing one or more keywords
     public void report3() {
@@ -124,7 +152,8 @@ public class NoteSystem {
         }
     }
 
-    public void report9() { //Organized by favorites
+    //Organized by favorites
+    public void report9() {
         int countTrue = 0;
         int countFalse = 1;
         int sizeOriginal = 0;
@@ -161,7 +190,8 @@ public class NoteSystem {
         }
     }
 
-    public void report0() { //Type in the note you want favorited
+    //Type in the note you want favorited
+    public void report0() {
         System.out.println("Enter the note you would like to favorite: ");
         Scanner input = new Scanner(System.in);
         String favoriteAction = input.nextLine();
@@ -180,7 +210,6 @@ public class NoteSystem {
             }
         }
     }
-
     // Display menu
     public static void displayMenu() {
         System.out.println("Generate report:");
@@ -194,13 +223,18 @@ public class NoteSystem {
         System.out.println("8. Report of all notes in order of length");
         System.out.println("9. Report of all notes in order of favorites");
         System.out.println("0. Type the name of the note you'd like to favorite or unfavorite");
-        System.out.println("11. Exit");
+        System.out.println("11. Utilize Facebook features!");
+        System.out.println("12. Exit");
     }
+
     // Main method for execution
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException, NullPointerException {
+        //*FacebookNoteSystem facebook = new FacebookNoteSystem();
+
         NoteSystem notes = new NoteSystem(".");
         Scanner s = new Scanner(System.in);
-        while (true) {
+
+    /*    while (true) {
             displayMenu();
             System.out.print("Choice: ");
             String input = s.nextLine();
@@ -227,12 +261,13 @@ public class NoteSystem {
             } else if (input.equals("0")) {
                 notes.report0();
             } else if (input.equals("11")) {
+                facebook.FacebookOptions();
+            } else if (input.equals("12")){
                 return;
-            } else {
+            }
+            else {
                 System.out.println("Error: Invalid input");
             }
-        }
+        }*/
     }
-
-
 }

@@ -1,0 +1,143 @@
+import com.restfb.*;
+import com.restfb.types.FacebookType;
+import com.restfb.types.Post;
+import com.restfb.types.User;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.io.*;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class FacebookNoteSystem {
+    String domain = "http://notesharingapp.com/";
+    String AppID = "426752631055935";
+    String secret = "58abd8a51a93ee7cba52d99354d27ae3";
+
+
+    boolean authorized = false;
+    String AccessUrl = "url";
+
+    FacebookClient fbClient = new DefaultFacebookClient(Version.LATEST);
+
+    //Reads the file the user wants to post (puts in string)
+    public String readFile(String filePath) throws FileNotFoundException, IOException {
+        String publishContent = "";
+        FileReader file = new FileReader(filePath);
+        BufferedReader reader = new BufferedReader(file);
+        String line = reader.readLine();
+
+        while (line != null) {
+            publishContent += line;
+            publishContent += " ";
+            line = reader.readLine();
+        }
+
+        return publishContent;
+    }
+
+    //Login flow for facebook
+    public void FacebookLogin(){
+
+        String authURL = "https://www.facebook.com/v2.10/dialog/oauth?client_id="+AppID+"&redirect_uri="+domain+"&scope=publish_actions,user_status,user_about_me,user_friends,user_posts";
+
+        System.setProperty("webdirver.chrome.driver", "chromedriver.app");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get(authURL);
+
+        while(true) {
+            if (!driver.getCurrentUrl().contains("facebook")) {
+                authorized = true;
+                String Realurl = driver.getCurrentUrl();
+                AccessUrl = Realurl.substring(Realurl.lastIndexOf("code=") + 5);
+                driver.quit();
+                break;
+            }
+        }
+
+        if (authorized == true) {
+            FacebookClient.AccessToken accessTokenUser = fbClient.obtainUserAccessToken(AppID, secret, domain, AccessUrl);
+            fbClient = new DefaultFacebookClient(accessTokenUser.getAccessToken(), Version.LATEST);
+        }
+    }
+
+    //Returns the User's full name from Facebook to console
+    public String getName() {
+        User user = fbClient.fetchObject("me", User.class);
+        String userName = user.getName();
+        System.out.println(user.getName());
+        return userName;
+    }
+
+    //Posts a text file as a status to Facebook
+    public void postOnFacebook() throws IOException{
+        System.out.println("Enter the note you would like to post on Facebook: ");
+        Scanner input = new Scanner(System.in);
+        String postNote = input.nextLine();
+
+        String directory = "/Users/ibandas/IdeaProjects/Team-AB-330-HW2/src/";
+        directory = directory + postNote;
+
+        String filePublishContent = readFile(directory);
+
+        fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", filePublishContent));
+        System.out.println("Posted!");
+    }
+    //Menu System
+    public void displayMenu() {
+        System.out.println(" ");
+        System.out.println("Login first by pressing '1' ");
+        System.out.println("Facebook Options: ");
+        System.out.println("1. Login to Facebook");
+        System.out.println("2. Print out name from Facebook");
+        System.out.println("3. Post a note on your Facebook Wall");
+        System.out.println("4. Grabs statuses on your Facebook feed, and put into text file");
+        System.out.println("5. Exit");
+    }
+
+    //Possible Options
+    public void FacebookOptions() throws IOException {
+        Scanner s = new Scanner(System.in);
+        while(true){
+            displayMenu();
+            System.out.println("Choice: ");
+            String input = s.nextLine();
+            if (input.equals("1")) {
+                FacebookLogin();
+            } else if (input.equals("2")) {
+                getName();
+            } else if (input.equals("3")) {
+                postOnFacebook();
+            } else if (input.equals("4")){
+                GetStatuses();
+            } else if (input.equals("5")){
+                return;
+            }
+        }
+    }
+    //Takes all of users statuses, and puts them into a new note (textfile) (path is not set to src like rest of text files)
+    public void GetStatuses() throws IOException {
+        Connection<Post> myFeed = fbClient.fetchConnection("me/feed", Post.class);
+        System.out.println("Enter the name of the text file you'd like to save the statuses into: ");
+        Scanner s = new Scanner(System.in);
+        String input = s.nextLine();
+        String status = "";
+        String userDeclaredTextFile = input;
+        PrintWriter userTextStatus = new PrintWriter(userDeclaredTextFile);
+        // Connections support paging and are iterable
+
+        // Iterate over the feed to access the particular pages
+        for (List<Post> myFeedPage : myFeed) {
+
+            // Iterate over the list of contained data
+            // to access the individual object
+            for (Post post : myFeedPage) {
+                status = post.getMessage();
+                userTextStatus.println(status);
+            }
+        }
+        userTextStatus.close();
+        System.out.println("Text File Created!");
+    }
+}

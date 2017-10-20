@@ -1,8 +1,8 @@
-/*import com.restfb.*;
+import com.restfb.*;
 import com.restfb.types.FacebookType;
 import com.restfb.types.User;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;*/
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -229,7 +229,7 @@ public class NoteSystem {
 
     // Main method for execution
     public static void main(String[] args) throws FileNotFoundException, IOException, NullPointerException {
-        //*FacebookNoteSystem facebook = new FacebookNoteSystem();
+        FacebookNoteSystem facebook = new FacebookNoteSystem();
 
         NoteSystem notes = new NoteSystem(".");
         Scanner s = new Scanner(System.in);
